@@ -6,7 +6,8 @@ contract Election{
 
     //constructor
     constructor () {
-        candidate = "Candidate 1";
+        addCandidate("Candidate 1");
+        addCandidate("Candidate 2");
     }
     
     struct Candidate{
@@ -18,4 +19,9 @@ contract Election{
     mapping(uint => Candidate) public candidates;
     // Store candiates count
     uint public candidatesCount;
+
+    function addCandidate(string memory _name) private{
+        candidatesCount ++;
+        candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
+    }
 }
